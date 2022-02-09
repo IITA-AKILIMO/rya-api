@@ -15,7 +15,7 @@ StartLimitIntervalSec=10
 Type=simple
 Restart=always
 RestartSec=30
-User=centos
+User=akilimo
 ExecStart=/usr/bin/env Rscript /path/to/server.R
 
 [Install]
