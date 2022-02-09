@@ -200,7 +200,7 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 #* 
 #* 
 #* @serializer contentType list(type='image/*')
-#* @get /plot/read
+#* @get /read-plot
 generate_plots <- function(file_name,ext=".png")
 {
 
