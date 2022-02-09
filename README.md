@@ -1,3 +1,3 @@
-# rapid-yield-assesment
+# rapid-yield-assessment
 
-Rapid yield assesment tool
+Rapid yield assessment tool
