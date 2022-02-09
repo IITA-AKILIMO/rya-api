@@ -18,7 +18,7 @@ Type=simple
 Restart=always
 RestartSec=30
 User=akilimo
-ExecStart=/usr/bin/env Rscript /path/to/server.R
+ExecStart=/usr/bin/Rscript /home/akilimo/services/rya/server.R
 
 [Install]
 WantedBy=multi-user.target

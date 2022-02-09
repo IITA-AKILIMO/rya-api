@@ -8,7 +8,13 @@ library(svglite)
 
 plan(multisession)
 
+os <- .Platform$OS.type
+
+if(os=='windows'){
 setwd(getwd())
+}else{
+  setwd('/home/akilimo/services/rya')
+}
 
 root <- Plumber$new()
 
