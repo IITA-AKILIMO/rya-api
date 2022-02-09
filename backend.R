@@ -108,7 +108,6 @@ RYA_plots <- function(results, field_area,file_name,ext) {
   #INPUT:       results: vector of 5 elements: LL 95%CI, LL 80% CI, estimate, UL 80% CI, UL 95%CI
   #             field_area: area of the field in m?
   
-  require(ggplot2)
   
   colors <- c(Low="#FFF5CD",Common="#FFD629",Medium="#C49F00",High="#745E00",`Very high`="#261F00")
   
@@ -186,7 +185,7 @@ RYA_plots <- function(results, field_area,file_name,ext) {
 #* 
 #* 
 #* @serializer json
-#* @post plot
+#* @post /plot
 generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 {
   result <- rjson::fromJSON(results)
@@ -201,7 +200,7 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 #* 
 #* 
 #* @serializer contentType list(type='image/*')
-#* @get plot/read
+#* @get /plot/read
 generate_plots <- function(file_name,ext=".png")
 {
 
