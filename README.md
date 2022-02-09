@@ -2,6 +2,8 @@
 
 ## Turning into a service
 
+Please note that although `systemd` has become the default init system for many Linux distributions, it isn’t implemented universally across all distros. As you go through this tutorial, if your terminal outputs the error `bash: systemctl is not installed` then it is likely that your machine has a different init system installed.
+
 Let’s create a file called `/etc/systemd/system/rya.service`:
 
 ``` batch
