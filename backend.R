@@ -94,7 +94,8 @@ RYA_estimate <- function(plant_counts=c(),
   sd_est <- sqrt(var_est)
   CI <- qnorm(c(0.025,0.10,0.5,0.90,0.975), mean=est, sd=sd_est)
   CI_prod <- CI*field_area
-  return(CI_prod)
+  
+  return(list("result"=CI_prod))
 }
 
 
@@ -191,7 +192,7 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
   result <- rjson::fromJSON(results)
   plots = RYA_plots(results = result, field_area = field_area,file_name=file_name,ext = ext)
   
-  return (list(file_name,ext))
+  data.frame("file_name"=c(file_name),"extension"=c(ext))
 }
 
 #* @param file_name
