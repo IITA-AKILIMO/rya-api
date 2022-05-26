@@ -189,9 +189,9 @@ RYA_plots <- function(results, field_area,file_name,ext) {
 #* @post /v1/rya/plot
 generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 {
-  result <- rjson::fromJSON(results)
-  print(result)
-  plots = RYA_plots(results = result, field_area = field_area,file_name=file_name,ext = ext)
+  #result <- rjson::fromJSON(results)
+  print(results)
+  plots = RYA_plots(results = results, field_area = field_area,file_name=file_name,ext = ext)
   
   file_name_a<- paste(file_name,ext,sep = '')
   file_name_b<- paste(file_name,"_lean",ext,sep = '')
