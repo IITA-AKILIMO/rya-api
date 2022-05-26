@@ -169,7 +169,7 @@ RYA_plots <- function(results, field_area,file_name,ext) {
     coord_cartesian(ylim=c(0.97,1.03))     
   
   ggsave(file=paste("images/",file_name,ext,sep = ''), plot=p1)
-  ggsave(file=paste("images/",file_name,"2",ext,sep = ''), plot=p2)
+  ggsave(file=paste("images/",file_name,"_lean",ext,sep = ''), plot=p2)
   
 
   return(list(p1,p2))
@@ -190,9 +190,13 @@ RYA_plots <- function(results, field_area,file_name,ext) {
 generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 {
   result <- rjson::fromJSON(results)
+  print(result)
   plots = RYA_plots(results = result, field_area = field_area,file_name=file_name,ext = ext)
   
-  data.frame("file_name"=c(file_name),"extension"=c(ext))
+  file_name_a<- paste(file_name,ext,sep = '')
+  file_name_b<- paste(file_name,"_lean",ext,sep = '')
+                  
+  list(plot_images =data.frame(file_name_a,file_name_b))
 }
 
 #* @param file_name
