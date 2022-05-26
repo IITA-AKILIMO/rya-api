@@ -24,7 +24,7 @@ backend <- Plumber$new("backend.R")
 # curl http://localhost:8090/api/v1/rya/not_async_sqrt?n=25 & curl http://localhost:8090/api/v1/rya/sqrt?n=64
 # curl http://localhost:8090/api/v1/rya/async_sqrt?n=121 & curl http://localhost:8090/api/v1/rya/sqrt?n=36
 
-root$mount("/api/v1/rya", backend)
+root$mount("/api", backend)
 
 root$routes
 

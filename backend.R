@@ -20,8 +20,8 @@
 #* 
 #* 
 #* @serializer json
-#* @post estimate
-#* @get estimate
+#* @post v1/rya/estimate
+#* @get v1/rya/estimate
 RYA_estimate <- function(plant_counts=c(), 
                          plant_RMs=c(), 
                          triangle_RMs=c(), 
@@ -186,7 +186,7 @@ RYA_plots <- function(results, field_area,file_name,ext) {
 #* 
 #* 
 #* @serializer json
-#* @post /plot
+#* @post /v1/rya/plot
 generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 {
   result <- rjson::fromJSON(results)
@@ -201,7 +201,7 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 #* 
 #* 
 #* @serializer contentType list(type='image/*')
-#* @post /read-plot
+#* @post /v1/rya/read-plot
 generate_plots <- function(file_name,ext=".png")
 {
 
