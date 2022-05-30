@@ -194,7 +194,7 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
   plots = RYA_plots(results = results, field_area = field_area,file_name=file_name,ext = ext)
   
   file_name_a<- paste(file_name,ext,sep = '')
-  file_name_b<- paste(file_name,"_lean",ext,sep = '')
+  file_name_b<- paste(file_name,"_full",ext,sep = '')
                   
   list(plot_images =data.frame(file_name_a,file_name_b,ext))
 }
