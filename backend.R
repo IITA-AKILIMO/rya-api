@@ -169,7 +169,7 @@ RYA_plots <- function(results, field_area,file_name,ext) {
     coord_cartesian(ylim=c(0.97,1.03))     
   
   ggsave(file=paste("images/",file_name,ext,sep = ''), plot=p1)
-  ggsave(file=paste("images/",file_name,"_lean",ext,sep = ''), plot=p2)
+  ggsave(file=paste("images/",file_name,"_full",ext,sep = ''), plot=p2)
   
 
   return(list(p1,p2))
