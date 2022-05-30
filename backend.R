@@ -196,7 +196,7 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
   file_name_a<- paste(file_name,ext,sep = '')
   file_name_b<- paste(file_name,"_lean",ext,sep = '')
                   
-  list(plot_images =data.frame(file_name_a,file_name_b))
+  list(plot_images =data.frame(file_name_a,file_name_b,ext))
 }
 
 #* @param file_name
@@ -206,10 +206,10 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 #* 
 #* @serializer contentType list(type='image/*')
 #* @post /v1/rya/read-plot
-generate_plots <- function(file_name,ext=".png")
+generate_plots <- function(file_name)
 {
 
-  theFile <-paste("images/",file_name,ext,sep = '')
+  theFile <-paste("images/",file_name,sep = '')
   print(theFile)
   print(file.info(theFile)$size)
   readBin(theFile, "raw", n = file.info(theFile)$size)
