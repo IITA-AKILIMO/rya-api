@@ -1,0 +1,13 @@
+# Base image https://hub.docker.com/u/rocker/
+FROM rocker/r-base:latest
+
+## create directories
+RUN mkdir -p /images
+
+
+## copy files
+COPY install_packages.R install_packages.R
+COPY server.R server.R
+
+## install R-packages
+RUN Rscript install_packages.R
