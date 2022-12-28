@@ -29,5 +29,5 @@ root$mount("/api", backend)
 root$routes
 
 print(paste("Updated Plumber Production Script started at: ", Sys.time()))
-root$run(port = 3000, host = "0.0.0.0", docs = FALSE)
+root$run(port = 80, host = "0.0.0.0", docs = FALSE)
 
