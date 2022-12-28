@@ -1,0 +1,10 @@
+version: '2.2'
+
+services:
+  rya:
+    container_name: rya
+    image: iita/rya:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
