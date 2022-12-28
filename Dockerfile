@@ -1,5 +1,6 @@
 # Base image https://hub.docker.com/u/rocker/
-FROM rocker/r-base:latest
+# FROM rocker/r-base:latest
+FROM iita/akilimo-base:latest
 
 ## create directories
 RUN mkdir -p /images
