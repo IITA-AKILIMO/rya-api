@@ -1,0 +1,7 @@
+  rya:
+    image: iita/rya-api:1.0.0
+    container_name: rya
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
