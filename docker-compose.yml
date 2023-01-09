@@ -1,9 +1,11 @@
 version: "3.3"
 services:
   rya:
-    image: iita/rya-api:1.0.0
     container_name: rya
+    image: iita/rya-api:1.0.0
     build:
       context: .
       dockerfile: Dockerfile
-    restart: on-failure
+    ports:
+      - 3000:80
+    restart: always

@@ -10,11 +10,13 @@ plan(multisession)
 
 os <- .Platform$OS.type
 
-if(os=='windows'){
+# if(os=='windows'){
+# setwd(getwd())
+# }else{
+#   setwd('/home/akilimo/services/rya')
+# }
+
 setwd(getwd())
-}else{
-  setwd('/home/akilimo/services/rya')
-}
 
 root <- Plumber$new()
 
@@ -28,6 +30,6 @@ root$mount("/api", backend)
 
 root$routes
 
-print(paste("Updated Plumber Development Script started at: ", Sys.time()))
-root$run(port = 3000, host = "0.0.0.0", swagger = FALSE)
+print(paste("Updated Plumber Production Script started at: ", Sys.time()))
+root$run(port = 80, host = "0.0.0.0", docs = FALSE)
 
