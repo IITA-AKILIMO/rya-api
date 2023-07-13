@@ -2,7 +2,7 @@ version: "3.3"
 services:
   rya:
     container_name: rya
-    image: iita/rya-api:latest
+    image: iita/rya-api:${RYA_VERSION}
     build:
       context: .
       dockerfile: Dockerfile
