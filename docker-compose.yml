@@ -5,6 +5,7 @@ services:
     image: iita/rya-api:${RYA_VERSION}
     build:
       context: .
+      target: final
       dockerfile: Dockerfile
     ports:
       - 3000:80
