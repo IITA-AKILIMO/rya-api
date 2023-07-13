@@ -8,6 +8,14 @@ library(svglite)
 
 plan(multisession)
 
+os <- .Platform$OS.type
+
+# if(os=='windows'){
+# setwd(getwd())
+# }else{
+#   setwd('/home/akilimo/services/rya')
+# }
+
 setwd(getwd())
 
 root <- Plumber$new()
@@ -18,10 +26,10 @@ backend <- Plumber$new("backend.R")
 # curl http://localhost:8090/api/v1/rya/not_async_sqrt?n=25 & curl http://localhost:8090/api/v1/rya/sqrt?n=64
 # curl http://localhost:8090/api/v1/rya/async_sqrt?n=121 & curl http://localhost:8090/api/v1/rya/sqrt?n=36
 
-root$mount("/api/v1/rya", backend)
+root$mount("/api", backend)
 
 root$routes
 
-print(paste("Updated Plumber Development Script started at: ", Sys.time()))
-root$run(port = 8090, host = "0.0.0.0", swagger = TRUE)
+print(paste("Updated Plumber Production Script started at: ", Sys.time()))
+root$run(port = 80, host = "0.0.0.0", docs = FALSE)
 

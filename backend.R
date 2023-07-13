@@ -20,8 +20,8 @@
 #* 
 #* 
 #* @serializer json
-#* @post estimate
-#* @get estimate
+#* @post v1/rya/estimate
+#* @get v1/rya/estimate
 RYA_estimate <- function(plant_counts=c(), 
                          plant_RMs=c(), 
                          triangle_RMs=c(), 
@@ -94,7 +94,8 @@ RYA_estimate <- function(plant_counts=c(),
   sd_est <- sqrt(var_est)
   CI <- qnorm(c(0.025,0.10,0.5,0.90,0.975), mean=est, sd=sd_est)
   CI_prod <- CI*field_area
-  return(CI_prod)
+  
+  return(list("result"=CI_prod))
 }
 
 
@@ -108,7 +109,6 @@ RYA_plots <- function(results, field_area,file_name,ext) {
   #INPUT:       results: vector of 5 elements: LL 95%CI, LL 80% CI, estimate, UL 80% CI, UL 95%CI
   #             field_area: area of the field in m?
   
-  require(ggplot2)
   
   colors <- c(Low="#FFF5CD",Common="#FFD629",Medium="#C49F00",High="#745E00",`Very high`="#261F00")
   
@@ -169,7 +169,7 @@ RYA_plots <- function(results, field_area,file_name,ext) {
     coord_cartesian(ylim=c(0.97,1.03))     
   
   ggsave(file=paste("images/",file_name,ext,sep = ''), plot=p1)
-  ggsave(file=paste("images/",file_name,"2",ext,sep = ''), plot=p2)
+  ggsave(file=paste("images/",file_name,"_full",ext,sep = ''), plot=p2)
   
 
   return(list(p1,p2))
@@ -186,13 +186,17 @@ RYA_plots <- function(results, field_area,file_name,ext) {
 #* 
 #* 
 #* @serializer json
-#* @post plot
+#* @post /v1/rya/plot
 generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 {
-  result <- rjson::fromJSON(results)
-  plots = RYA_plots(results = result, field_area = field_area,file_name=file_name,ext = ext)
+  #result <- rjson::fromJSON(results)
+  print(results)
+  plots = RYA_plots(results = results, field_area = field_area,file_name=file_name,ext = ext)
   
-  return (list(file_name,ext))
+  file_name_a<- paste(file_name,ext,sep = '')
+  file_name_b<- paste(file_name,"_full",ext,sep = '')
+                  
+  list(plot_images =data.frame(file_name_a,file_name_b,ext))
 }
 
 #* @param file_name
@@ -201,11 +205,11 @@ generate_plots <- function(results,field_area,file_name,ext=".png",read=FALSE)
 #* 
 #* 
 #* @serializer contentType list(type='image/*')
-#* @get plot/read
-generate_plots <- function(file_name,ext=".png")
+#* @post /v1/rya/read-plot
+generate_plots <- function(file_name)
 {
 
-  theFile <-paste("images/",file_name,ext,sep = '')
+  theFile <-paste("images/",file_name,sep = '')
   print(theFile)
   print(file.info(theFile)$size)
   readBin(theFile, "raw", n = file.info(theFile)$size)
